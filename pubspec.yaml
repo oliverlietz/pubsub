@@ -1,0 +1,10 @@
+name: pubsub
+version: 0.0.1
+author: Oliver Lietz
+description: publish/subscribe message bus
+homepage: https://github.com/oliverlietz/pubsub
+dependencies:
+  meta: any
+  uuid: any
+dev_dependencies:
+  unittest: any
