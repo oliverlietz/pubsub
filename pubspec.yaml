@@ -1,6 +1,6 @@
 name: pubsub
 version: 0.0.1
-author: Oliver Lietz
+author: Oliver Lietz <info@oliverlietz.de>
 description: publish/subscribe message bus
 homepage: https://github.com/oliverlietz/pubsub
 dependencies:
