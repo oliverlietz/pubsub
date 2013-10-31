@@ -4,7 +4,6 @@ author: Oliver Lietz <info@oliverlietz.de>
 description: publish/subscribe message bus
 homepage: https://github.com/oliverlietz/pubsub
 dependencies:
-  meta: '>=0.6.9 <0.6.10'
   uuid: '>=0.1.6 <0.1.7'
 dev_dependencies:
   unittest: any

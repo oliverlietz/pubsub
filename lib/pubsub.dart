@@ -2,7 +2,6 @@ library pubsub;
 
 import 'dart:async';
 import 'dart:mirrors';
-import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
 
 part 'message.dart';
