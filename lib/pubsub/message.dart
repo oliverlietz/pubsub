@@ -1,4 +1,4 @@
-part of pubsub;
+import 'package:uuid/uuid.dart';
 
 abstract class Message {
 

@@ -1,6 +1,9 @@
-part of pubsub_test;
+import 'dart:mirrors';
+import 'package:pubsub/pubsub.dart';
+import 'package:test/test.dart';
+import 'samples.dart';
 
-void utils_tests() {
+void main() {
 
   group("findMessageHandlers", () {
 

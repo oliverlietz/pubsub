@@ -1,4 +1,4 @@
-part of pubsub_test;
+import 'package:pubsub/pubsub.dart';
 
 const dummy = const _Dummy();
 

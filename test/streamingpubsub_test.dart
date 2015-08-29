@@ -1,6 +1,10 @@
-part of pubsub_test;
+import 'dart:async';
+import 'dart:math';
+import 'package:pubsub/pubsub.dart';
+import 'package:test/test.dart';
+import 'samples.dart';
 
-void streamingpubsub_tests() {
+void main() {
 
   group("register", () {
 
@@ -29,8 +33,8 @@ void streamingpubsub_tests() {
       }
       void checkSubscriber1() => expect(subscriber1.countMessageA(), number * 4);
       void checkSubscriber2() => expect(subscriber2.countMessageA(), number * 4);
-      new Timer(new Duration(milliseconds: 100), expectAsync0(checkSubscriber1));
-      new Timer(new Duration(milliseconds: 100), expectAsync0(checkSubscriber2));
+      new Timer(new Duration(milliseconds: 100), expectAsync(checkSubscriber1));
+      new Timer(new Duration(milliseconds: 100), expectAsync(checkSubscriber2));
     });
 
   });

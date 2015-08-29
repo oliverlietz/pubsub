@@ -1,4 +1,8 @@
-part of pubsub;
+import 'dart:async';
+import 'dart:mirrors';
+import 'package:logging/logging.dart';
+import 'api.dart';
+import 'utils.dart';
 
 /**
  * creates one (broadcasting) Stream per Symbol
@@ -26,6 +30,11 @@ class StreamPerSymbolMessageBus implements MessageBus {
    */
   final Map<Object, List<StreamSubscription>> _streamSubscriptions = new Map<Object, List<StreamSubscription>>();
 
+  final Logger logger = new Logger('[pubsub] StreamPerSymbolMessageBus');
+
+  StreamPerSymbolMessageBus() {
+  }
+
   /**
    * returns a (broadcast) Stream for the given Symbol
    * creates Streamcontroller and (broadcast) Stream on demand
@@ -50,7 +59,7 @@ class StreamPerSymbolMessageBus implements MessageBus {
    * registers an Object (subscriber), does nothing if Object is already registered
    */
   @override
-  void register(Object subscriber) {
+  void register(final Object subscriber) {
     if (!_streamSubscriptions.containsKey(subscriber)) {
       final InstanceMirror im = reflect(subscriber);
       final List<MethodMirror> methods = findMessageHandlersOnInstanceMirror(im);
@@ -69,7 +78,7 @@ class StreamPerSymbolMessageBus implements MessageBus {
    * cancels all StreamSubscriptions for given Object
    */
   @override
-  void unregister(Object subscriber) {
+  void unregister(final Object subscriber) {
     if (_streamSubscriptions.containsKey(subscriber)) {
       final List<StreamSubscription> list = _streamSubscriptions[subscriber];
       list.forEach((streamSubscription) => streamSubscription.cancel());
@@ -81,7 +90,8 @@ class StreamPerSymbolMessageBus implements MessageBus {
    * publishs an Object (message)
    */
   @override
-  void publish(Object message) {
+  void publish(final Object message) {
+    logger.fine("publish: $message");
     final Symbol symbol = reflect(message).type.qualifiedName;
     sink(symbol).add(message);
   }
